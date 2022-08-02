@@ -1,6 +1,6 @@
 import { Card } from 'antd';
 import { ButtonPrimary } from '~/components/Button';
-import CardC from './CardC';
+import UserContent from './UserContent';
 import './Home.scss';
 
 function Home() {
@@ -24,7 +24,7 @@ function Home() {
                 ></Card>
             </div>
             <div>
-                <CardC />
+                <UserContent />
             </div>
         </div>
     );

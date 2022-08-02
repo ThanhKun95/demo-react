@@ -4,7 +4,12 @@
 
 .list-comment {
     list-style: none;
+    padding: 24px;
 }
 // .user-content {
 //     display: flex;
 // }
+
+input.ant-input {
+    height: 40px;
+}
