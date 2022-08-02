@@ -3,12 +3,11 @@ import 'antd/dist/antd.min.css';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
-// import App from './App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './styles/index.css';
 import { BrowserRouter } from 'react-router-dom';
 import AppLayout from './components/common/Layout';
-import Home from './pages/Home';
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
@@ -17,7 +16,7 @@ root.render(
         <Provider store={store}>
             <BrowserRouter>
                 <AppLayout>
-                    <Home />
+                    <App />
                 </AppLayout>
             </BrowserRouter>
         </Provider>

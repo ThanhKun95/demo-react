@@ -1,7 +1,7 @@
-import { ButtonHeart, ButtonPrimary } from '~/components/Button';
+import { Card } from 'antd';
+import { ButtonPrimary } from '~/components/Button';
 import CardC from './CardC';
 import './Home.scss';
-import { Card } from 'antd';
 
 function Home() {
     // console.log(cx);
