@@ -57,9 +57,9 @@
         fill: var(--pink);
     }
 
-    .main:hover ~ .background path {
-        animation: fade-animation 2s ease-in-out forwards;
-    }
+    // .main:hover ~ .background path {
+    //     animation: fade-animation 2s ease-in-out forwards;
+    // }
 }
 @keyframes stroke-animation {
     0% {

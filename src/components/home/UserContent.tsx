@@ -1,9 +1,8 @@
-import { Avatar, Card, Input } from 'antd';
-import { ButtonHeart, Comment, Share } from '~/components/Button';
-import './UserContent.scss';
-
-import { useState } from 'react';
 import { EllipsisOutlined } from '@ant-design/icons';
+import { Avatar, Card, Input } from 'antd';
+import { useState } from 'react';
+import { ButtonHeart, ButtonPrimary, Comment, Share } from '~/components/Button';
+import './UserContent.scss';
 const { Meta } = Card;
 
 function UserContent() {
@@ -14,11 +13,7 @@ function UserContent() {
     };
 
     return (
-        <Card
-            title="Default size card"
-            extra={<EllipsisOutlined />}
-            style={{ width: 400, padding: 0, margin: '90px 0 58px' }}
-        >
+        <Card title="Global feed" extra={<EllipsisOutlined />} className="card-container" style={{ padding: 0 }}>
             <Meta
                 avatar={<Avatar src="https://taimienphi.vn/tmp/cf/aut/anh-gai-xinh-1.jpg" />}
                 title="UserName"
@@ -38,7 +33,11 @@ function UserContent() {
                     cover={<img alt="example" src="https://i.9mobi.vn/cf/Images/huy/2021/12/6/anh-gai-xinh-3.jpg" />}
                 ></Card>
 
-                <Card style={{ width: 399, border: 0 }} actions={[<ButtonHeart />, <Comment />, <Share />]}></Card>
+                <Card
+                    className="card-action"
+                    style={{ width: '100%', border: 0 }}
+                    actions={[<ButtonHeart liked />, <Comment />, <Share />]}
+                ></Card>
             </div>
             <Input
                 addonAfter={
@@ -56,23 +55,24 @@ function UserContent() {
                 defaultValue=""
                 placeholder="White a comment..."
             />
-            <div>
+            <div style={{ width: '100%' }}>
                 {/* <!-- Comment wrap START --> */}
                 <ul className="list-comment">
                     <li className="comment-item">
                         {/* <!-- Comment item nested START --> */}
                         <div className="user-UserContent">
                             <Meta
+                                style={{ marginTop: '12px' }}
                                 avatar={<Avatar src="https://i.9mobi.vn/cf/Images/huy/2021/12/6/anh-gai-xinh-5.jpg" />}
                                 title="UserName"
                             />
                             <div>
-                                <Card bordered={false}>
+                                <Card bordered={false} style={{ margin: '12px' }}>
                                     See resolved goodness felicity shy civility domestic had but Drawings offended yet
                                     answered Jennings perceive.
                                 </Card>
                                 <Card
-                                    style={{ width: 350, border: 0 }}
+                                    style={{ width: '100%', border: 0 }}
                                     actions={[<ButtonHeart />, <Comment />, <div>Time</div>]}
                                 ></Card>
                             </div>
@@ -87,6 +87,13 @@ function UserContent() {
             </div>
 
             {/* <!-- Card footer END --> */}
+            <div className="feed">
+                <Card
+                    className="feed-action"
+                    style={{ border: 0, background: 'transparent' }}
+                    actions={[<ButtonPrimary>Your Feed</ButtonPrimary>, <ButtonPrimary>Global Feed</ButtonPrimary>]}
+                ></Card>
+            </div>
         </Card>
     );
 }

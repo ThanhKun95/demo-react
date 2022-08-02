@@ -12,7 +12,6 @@
 .ant-menu-horizontal > .ant-menu-item a:before,
 .ant-menu-horizontal > .ant-menu-submenu:after {
     bottom: 6px !important;
-    // display: none;
 }
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected:after,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-active:after,
@@ -118,4 +117,9 @@
     top: 0;
     left: 0;
     right: 0;
+    height: 58px;
+    * > * {
+        height: 100%;
+        align-items: center;
+    }
 }

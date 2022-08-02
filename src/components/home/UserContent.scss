@@ -13,3 +13,104 @@
 input.ant-input {
     height: 40px;
 }
+@media (max-width: 575px) {
+    .feed {
+        width: 100%;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .card-container,
+    .card-action {
+        width: 100%;
+    }
+
+    .feed {
+        width: 100%;
+    }
+    .ant-card {
+        font-size: 140%;
+    }
+    .card-container {
+        margin: 58px 0;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .card-container,
+    .card-action {
+        width: calc(100% - 2px);
+    }
+    .feed {
+        width: calc(100% - 103px);
+    }
+    .ant-card {
+        font-size: 130%;
+    }
+    .ant-layout-content {
+        padding: 16px 50px;
+    }
+    .card-container {
+        margin: 90px 0 58px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .card-container,
+    .card-action {
+        width: 60%;
+    }
+    .feed {
+        width: calc(60% - 61px);
+    }
+    .ant-card {
+        font-size: 120%;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .card-container,
+    .card-action {
+        width: 50%;
+    }
+    .feed {
+        width: calc(50% - 51px);
+    }
+    .ant-card {
+        font-size: 110%;
+    }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+    .card-container,
+    .card-action {
+        width: 40%;
+    }
+    .feed {
+        left: 50px;
+
+        width: calc(40% - 41px);
+    }
+    .ant-card {
+        font-size: 100%;
+    }
+}
+.card-action > * {
+    flex: 1;
+    margin: auto;
+}
+.feed {
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+    &-action {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+        background-color: red !important;
+    }
+}
