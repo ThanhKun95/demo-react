@@ -47,9 +47,9 @@ html {
 }
 .menu-btn.open .menu-btn__burger::before {
     // transform: rotate(45deg) translate(35px, 35px);
-    transform: rotate(60deg) translate(16px, 30px);
+    transform: rotate(60deg) translate(18px, 30px);
 }
 .menu-btn.open .menu-btn__burger::after {
     // transform: rotate(-45deg) translate(35px, 35px);
-    transform: rotate(-45deg) translate(35px, 35px);
+    transform: rotate(-45deg) translate(0px, 10px);
 }
