@@ -7,20 +7,14 @@ function User() {
     const [register, setRegister] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const showRegister = () => {
-        setRegister(true);
-    };
-
-    const handleOk = () => {
+    const handleLoading = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
             setRegister(false);
         }, 3000);
     };
-    const handleRegister = () => {
-        setRegister(false);
-    };
+
     return (
         <div className="user-container">
             {/* Nav */}
@@ -34,44 +28,69 @@ function User() {
                         <span>Login</span>
                     </li>
                     <li>
-                        <span onClick={showRegister}>Register</span>
+                        <span
+                            onClick={() => {
+                                setRegister(true);
+                            }}
+                        >
+                            Register
+                        </span>
                     </li>
                 </ul>
             </nav>
 
             {/* Modal Login */}
-            <Modal title="Login" centered visible={login} onOk={() => setLogin(false)} onCancel={() => setLogin(false)}>
-                <p>some contents...</p>
-                <p>some contents...</p>
-                <Space direction="vertical">
-                    <Link>Have an account?</Link>
+            <Modal
+                visible={login}
+                title="Login"
+                onOk={handleLoading}
+                onCancel={() => {
+                    setLogin(false);
+                }}
+                footer={false}
+                width={'30%'}
+                centered
+            >
+                <Space direction="vertical" style={{ marginBottom: '20px' }}>
+                    <Input placeholder="Email" status="error" />
+                    <Input.Password placeholder="Password" />
                 </Space>
-                <Button>Login</Button>
+                <Space direction="vertical" style={{ margin: '20px 0' }}>
+                    <Link>Need an account?</Link>
+                </Space>
+                <div className="btn-wrapper">
+                    <Button key="submit" type="primary" loading={loading} onClick={handleLoading}>
+                        Login
+                    </Button>
+                </div>
             </Modal>
 
-            <>
-                <Modal
-                    visible={register}
-                    title="Title"
-                    onOk={handleOk}
-                    onCancel={handleRegister}
-                    footer={false}
-                    width={400}
-                >
-                    <Space direction="vertical" style={{ marginBottom: '20px' }}>
-                        <Input placeholder="Email" status="error" />
-                        <Input.Password placeholder="Password" />
-                    </Space>
-                    <Space direction="vertical" style={{ margin: '20px 0' }}>
-                        <Link>Have an account?</Link>
-                    </Space>
-                    <div className="btn-wrapper">
-                        <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-                            Login
-                        </Button>
-                    </div>
-                </Modal>
-            </>
+            {/* Modal Register */}
+            <Modal
+                visible={register}
+                title="Register"
+                onOk={handleLoading}
+                onCancel={() => {
+                    setRegister(false);
+                }}
+                footer={false}
+                width={'30%'}
+                centered
+            >
+                <Space direction="vertical" style={{ marginBottom: '20px' }}>
+                    <Input placeholder="Email" status="error" />
+                    <Input placeholder="UserName" status="error" />
+                    <Input.Password placeholder="Password" />
+                </Space>
+                <Space direction="vertical" style={{ margin: '20px 0' }}>
+                    <Link>Have an account?</Link>
+                </Space>
+                <div className="btn-wrapper">
+                    <Button key="submit" type="primary" loading={loading} onClick={handleLoading}>
+                        Login
+                    </Button>
+                </div>
+            </Modal>
         </div>
     );
 }

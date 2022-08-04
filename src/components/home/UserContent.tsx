@@ -2,6 +2,7 @@ import { EllipsisOutlined } from '@ant-design/icons';
 import { Avatar, Card, Input } from 'antd';
 import { useState } from 'react';
 import { ButtonHeart, ButtonPrimary, Comment, Share } from '~/components/Button';
+import MenuFeed from '../Button/MenuFeed';
 import './UserContent.scss';
 const { Meta } = Card;
 
@@ -102,11 +103,7 @@ function UserContent() {
 
             {/* <!-- Card footer END --> */}
             <div className="feed">
-                <Card
-                    className="feed-action"
-                    style={{ border: 0, background: 'transparent' }}
-                    actions={[<ButtonPrimary>Your Feed</ButtonPrimary>, <ButtonPrimary>Global Feed</ButtonPrimary>]}
-                ></Card>
+                <MenuFeed />
             </div>
         </Card>
     );

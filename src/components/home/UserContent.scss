@@ -63,9 +63,7 @@ input.ant-input {
     .card-action {
         width: 60%;
     }
-    .feed {
-        width: calc(60% - 61px);
-    }
+
     .ant-card {
         font-size: 120%;
     }
@@ -77,9 +75,7 @@ input.ant-input {
     .card-action {
         width: 50%;
     }
-    .feed {
-        width: calc(50% - 51px);
-    }
+
     .ant-card {
         font-size: 110%;
     }
@@ -91,11 +87,7 @@ input.ant-input {
     .card-action {
         width: 40%;
     }
-    .feed {
-        left: 50px;
 
-        width: calc(40% - 41px);
-    }
     .ant-card {
         font-size: 100%;
     }
@@ -106,9 +98,8 @@ input.ant-input {
 }
 .feed {
     position: fixed;
-    bottom: 0;
+    bottom: 20%;
     z-index: 99;
-    box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
     &-action {
         background: linear-gradient(180deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
         background-color: red !important;
