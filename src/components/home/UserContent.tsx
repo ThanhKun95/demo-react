@@ -15,7 +15,12 @@ function UserContent() {
     return (
         <Card title="Global feed" extra={<EllipsisOutlined />} className="card-container" style={{ padding: 0 }}>
             <Meta
-                avatar={<Avatar src="https://taimienphi.vn/tmp/cf/aut/anh-gai-xinh-1.jpg" />}
+                avatar={
+                    <Avatar
+                        src="https://taimienphi.vn/tmp/cf/aut/anh-gai-xinh-1.jpg"
+                        style={{ width: '60px', height: '60px' }}
+                    />
+                }
                 title="UserName"
                 description="Time"
                 style={{ padding: ' 24px' }}
@@ -36,7 +41,7 @@ function UserContent() {
                 <Card
                     className="card-action"
                     style={{ width: '100%', border: 0 }}
-                    actions={[<ButtonHeart liked />, <Comment />, <Share />]}
+                    actions={[<ButtonHeart liked>15K</ButtonHeart>, <Comment>4000</Comment>, <Share>20K</Share>]}
                 ></Card>
             </div>
             <Input
@@ -63,11 +68,16 @@ function UserContent() {
                         <div className="user-UserContent">
                             <Meta
                                 style={{ marginTop: '12px' }}
-                                avatar={<Avatar src="https://i.9mobi.vn/cf/Images/huy/2021/12/6/anh-gai-xinh-5.jpg" />}
+                                avatar={
+                                    <Avatar
+                                        src="https://i.9mobi.vn/cf/Images/huy/2021/12/6/anh-gai-xinh-5.jpg"
+                                        style={{ width: '32px' }}
+                                    />
+                                }
                                 title="UserName"
                             />
                             <div>
-                                <Card bordered={false} style={{ margin: '12px' }}>
+                                <Card bordered={false} style={{ margin: '12px 12px 12px 48px' }}>
                                     See resolved goodness felicity shy civility domestic had but Drawings offended yet
                                     answered Jennings perceive.
                                 </Card>
@@ -78,10 +88,14 @@ function UserContent() {
                             </div>
                         </div>
                         {/* <!-- Load more replies --> */}
-                        <div style={{ textAlign: 'start', marginLeft: '45px' }}>Load more replies</div>
+                        <div style={{ textAlign: 'start', marginLeft: '45px', fontWeight: 700, color: '#65676b' }}>
+                            Load more replies
+                        </div>
                         {/* <!-- Comment item nested END --> */}
                     </li>
-                    <div style={{ textAlign: 'start', margin: '20px 0' }}>Load more comments</div>
+                    <div style={{ textAlign: 'start', margin: '20px 0', fontWeight: 700, color: '#65676b' }}>
+                        Load more comments
+                    </div>
                 </ul>
                 {/* <!-- Comment wrap END --> */}
             </div>

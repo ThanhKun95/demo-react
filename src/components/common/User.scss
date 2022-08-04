@@ -58,3 +58,20 @@
     -o-transition: all, 0.3s;
     transition: all, 0.3s;
 }
+.ant-modal-body {
+    display: flex;
+    flex-direction: column;
+}
+.ant-input-affix-wrapper {
+    height: 40px;
+}
+.ant-input-affix-wrapper.ant-input-password .ant-input {
+    height: 30px;
+}
+.btn-wrapper {
+    display: flex;
+    justify-content: end;
+    button ~ button {
+        margin-left: 10px;
+    }
+}
