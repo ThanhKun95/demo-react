@@ -76,7 +76,7 @@ function User() {
                         type="primary"
                         loading={loading}
                         onClick={handleLoading}
-                        style={{ width: '78px' }}
+                        style={{ width: '100px' }}
                     >
                         {modal === 'login' ? 'login' : 'register'}
                     </Button>

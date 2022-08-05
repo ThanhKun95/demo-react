@@ -2,11 +2,11 @@ import { Authentication, Registration } from '../models';
 import axiosClient from './axiosClient';
 
 const blogAppApi = {
-    authentication: (): Promise<Authentication> => {
-        return axiosClient.get('/article');
+    authentication: (user: Authentication): Promise<Authentication> => {
+        return axiosClient.post('/users/login');
     },
-    registration: (): Promise<Registration> => {
-        return axiosClient.get('/users');
+    registration: (users: Registration): Promise<Registration> => {
+        return axiosClient.post('/users');
     },
 };
 export default blogAppApi;
