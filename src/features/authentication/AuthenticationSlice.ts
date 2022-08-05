@@ -18,7 +18,8 @@ const authenticationSlice = createSlice({
     name: 'authentication',
     initialState,
     reducers: {
-        GET_AUTHENTICATION: (state) => {
+        GET_AUTHENTICATION: (state, action: PayloadAction) => {
+            console.log(action);
             state.isLoading = true;
         },
         GET_AUTHENTICATION_SUCCESS: (state, action: PayloadAction<Authentication>) => {

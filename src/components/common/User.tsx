@@ -1,6 +1,6 @@
 import { Button, Input, Modal, Space, Typography } from 'antd';
 import { useState } from 'react';
-import './Layout.scss';
+import './User.scss';
 const { Link } = Typography;
 function User() {
     const [loading, setLoading] = useState(false);
