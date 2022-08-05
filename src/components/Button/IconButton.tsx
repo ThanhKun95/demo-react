@@ -1,4 +1,4 @@
-import './IconButton.scss';
+import './Button.scss';
 interface Props {
     liked?: boolean;
     children?: string;

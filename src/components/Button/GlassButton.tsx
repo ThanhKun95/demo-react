@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import './GlassButton.scss';
+import './Button.scss';
 
 interface Props {
     children?: ReactNode;

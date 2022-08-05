@@ -1,6 +1,6 @@
 import { Menu, PageHeader } from 'antd';
 import { NavLink } from 'react-router-dom';
-import './MenuPC.scss';
+import './Layout.scss';
 import User from './User';
 
 function MenuPC() {
@@ -11,13 +11,12 @@ function MenuPC() {
                 style={{
                     width: '100%',
                     background: 'black',
-                    opacity: 0.9,
                     zIndex: 99,
                 }}
                 title={
                     <Menu
                         className="nav-list"
-                        style={{ border: 'none', background: 'black', opacity: 0.9 }}
+                        style={{ border: 'none', background: 'black' }}
                         theme={'light'}
                         defaultSelectedKeys={['1']}
                         defaultOpenKeys={['1']}

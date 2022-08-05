@@ -1,0 +1,282 @@
+//  Primary
+.primary-btn {
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'Play', sans-serif;
+    font-weight: 700;
+    padding: 14px 32px 12px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+.primary-btn:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.primary-btn:hover:before {
+    height: 100%;
+    width: 100%;
+}
+.primary-btn:hover:after {
+    height: 100%;
+    width: 100%;
+}
+.primary-btn:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 30px;
+    width: 30px;
+    border-left: 2px solid var(--primary);
+    border-top: 2px solid var(--primary);
+    content: '';
+    z-index: -1;
+    -webkit-transition: all, 0.7s;
+    -o-transition: all, 0.7s;
+    transition: all, 0.7s;
+}
+.primary-btn:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 30px;
+    width: 30px;
+    border-right: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    content: '';
+    z-index: -1;
+    -webkit-transition: all, 0.7s;
+    -o-transition: all, 0.7s;
+    transition: all, 0.7s;
+}
+
+// Glass
+.glass {
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.btn3 {
+    text-transform: uppercase;
+    background-image: linear-gradient(45deg, transparent 0%, rgba(255, 255, 255, 0.5) 51%, transparent 100%);
+    background-size: 300%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 1.4rem 4rem;
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: 0.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    transition: 300ms ease-in-out background-position;
+}
+
+.btn3:hover {
+    background-position: right top;
+}
+
+// Icon
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+.btn-fake.comment {
+    stroke-width: 8;
+    stroke: var(--blue);
+    fill: var(--blue);
+}
+.btn-fake.share {
+    stroke-width: 30;
+    stroke: black;
+    // fill: black;
+}
+.btn-fake {
+    fill: transparent;
+    stroke: var(--pink);
+    stroke-width: 50;
+    cursor: pointer;
+    position: relative;
+
+    svg {
+        overflow: visible;
+        width: 1.4rem;
+    }
+
+    path {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 1550;
+        transform-origin: center;
+    }
+
+    .background {
+        position: absolute;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        stroke: none;
+    }
+
+    .main:hover path {
+        animation: stroke-animation 2s ease-in-out forwards;
+    }
+}
+.btn-fake.liked {
+    fill: var(--pink);
+
+    .main:hover path {
+        animation: stroke-animation 2s ease-in-out forwards;
+        fill: var(--pink);
+    }
+
+    // .main:hover ~ .background path {
+    //     animation: fade-animation 2s ease-in-out forwards;
+    // }
+}
+@keyframes stroke-animation {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    30% {
+        stroke-dashoffset: 1550;
+    }
+    60% {
+        stroke-dashoffset: 3100;
+        fill: transparent;
+        transform: scale(1);
+    }
+    80% {
+        // fill: var(--pink);
+        transform: scale(1.1);
+    }
+    90% {
+        transform: scale(1);
+    }
+    100% {
+        stroke-dashoffset: 3100;
+        // fill: var(--pink);
+    }
+}
+
+@keyframes fade-animation {
+    70% {
+        fill: transparent;
+        transform: scale(1);
+    }
+    80% {
+        fill: var(--pink-light);
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+// Menu
+.menu-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    /* border: 3px solid #fff; */
+}
+.menu-btn__burger {
+    width: 30px;
+    height: 4px;
+    background-image: linear-gradient(10deg, #3a24fe, #6a5af9, #8477f6, #ff2ced, #ffb4dc, #fc6c8f, #ffb86c);
+
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+    transition: all 0.5s ease-in-out;
+    opacity: 0.5;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background: inherit;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255, 101, 47, 0.2);
+    transition: all 0.5s ease-in-out;
+}
+.menu-btn__burger::before {
+    transform: translateY(-10px);
+}
+.menu-btn__burger::after {
+    transform: translateY(10px);
+}
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+}
+.menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+    background-image: linear-gradient(10deg, #3a24fe, #6a5af9, #8477f6, #ff2ced, #ffb4dc, #fc6c8f, #ffb86c);
+}
+.menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+    background-image: linear-gradient(10deg, #3a24fe, #6a5af9, #8477f6, #ff2ced, #ffb4dc, #fc6c8f, #ffb86c);
+}
+
+.menu-feed {
+    flex-direction: column;
+    color: rgb(99, 99, 99);
+    opacity: 0;
+    position: relative;
+    display: flex;
+    transition: all 0.5s ease-in-out;
+    &__item {
+        background-color: white;
+        display: flex;
+        width: 60px;
+        height: 60px;
+        border: 1px solid #ccc;
+        justify-content: center;
+        align-items: center;
+        border-radius: 99px;
+        font-size: 30px;
+        position: absolute;
+        left: 120px;
+        top: -95px;
+        cursor: pointer;
+
+        &.feed-1,
+        &.feed-2 {
+            display: none;
+        }
+        &.feed-2 {
+            top: -25px;
+        }
+    }
+    &.show-feed {
+        opacity: 1;
+        transform: translateX(-50px);
+        z-index: 1;
+        & .feed-1,
+        & .feed-2 {
+            display: flex;
+        }
+    }
+}

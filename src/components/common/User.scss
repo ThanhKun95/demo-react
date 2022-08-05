@@ -20,14 +20,15 @@
     font-weight: 700;
     text-transform: uppercase;
     color: #00bfe7;
+    & ul li {
+        list-style: none;
+        display: inline-block;
+        margin-right: 45px;
+        position: relative;
+        cursor: pointer;
+    }
 }
-.header__nav__user ul li {
-    list-style: none;
-    display: inline-block;
-    margin-right: 45px;
-    position: relative;
-    cursor: pointer;
-}
+
 .header__nav__user ul li.active span:after {
     -webkit-transform: scale(1);
     -ms-transform: scale(1);
@@ -64,14 +65,19 @@
 }
 .ant-input-affix-wrapper {
     height: 40px;
+    &.ant-input-password .ant-input {
+        height: 30px;
+    }
 }
-.ant-input-affix-wrapper.ant-input-password .ant-input {
-    height: 30px;
-}
+
 .btn-wrapper {
     display: flex;
     justify-content: end;
     button ~ button {
         margin-left: 10px;
     }
+}
+// Antd
+.ant-modal-content {
+    height: 400px;
 }

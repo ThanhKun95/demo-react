@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import './ButtonPrimary.scss';
+import './Button.scss';
 
 interface Props {
     children?: ReactNode;

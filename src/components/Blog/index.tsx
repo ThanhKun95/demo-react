@@ -1,12 +1,12 @@
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Avatar, Card, Input } from 'antd';
 import { useState } from 'react';
-import { ButtonHeart, ButtonPrimary, Comment, Share } from '~/components/Button';
+import { ButtonHeart, Comment, Share } from '~/components/Button';
 import MenuFeed from '../Button/MenuFeed';
-import './UserContent.scss';
+import './Blog.scss';
 const { Meta } = Card;
 
-function UserContent() {
+function Blog() {
     const [loading, setLoading] = useState(true);
 
     const onChange = (checked: boolean) => {
@@ -109,4 +109,4 @@ function UserContent() {
     );
 }
 
-export default UserContent;
+export default Blog;
