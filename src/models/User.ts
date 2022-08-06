@@ -1,14 +1,23 @@
-export interface Authentication {
+export interface Auth {
     user: {
         email: string;
         password: string;
     };
 }
-export interface Registration {
+export interface Regis {
     user: {
         username: string;
         email: string;
         password: string;
+    };
+}
+export interface DataAuthRegisReturn {
+    user: {
+        bio: any;
+        email: string;
+        image: null | string;
+        token: string;
+        username: string;
     };
 }
 
