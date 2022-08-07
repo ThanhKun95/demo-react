@@ -3,13 +3,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Regis } from '~/models';
 
 interface initial {
-    // regis: Regis;
     isLoading: boolean;
     isLoadingSuccess: boolean;
 }
 
 const initialState: initial = {
-    // regis: {} as Regis,
     isLoading: false,
     isLoadingSuccess: false,
 };
@@ -22,7 +20,6 @@ const regisSlice = createSlice({
             state.isLoading = true;
         },
         GET_REGIS_SUCCESS: (state) => {
-            // state.regis = action.payload;
             state.isLoading = false;
             state.isLoadingSuccess = true;
         },

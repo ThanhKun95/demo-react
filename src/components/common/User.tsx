@@ -1,10 +1,10 @@
-import { Button, Input, Modal, Space, Typography } from 'antd';
-import React, { useState, useEffect } from 'react';
+import { Button, Checkbox, Form, Input, Modal, Space, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '~/app/hooks';
 import { authActions } from '~/features/auth/AuthSlice';
 import { regisActions } from '~/features/regis/RegisSlice';
 import './User.scss';
-import { useNavigate } from 'react-router-dom';
 const { Link } = Typography;
 function User() {
     const navigate = useNavigate();
@@ -14,9 +14,7 @@ function User() {
     const [loading, setLoading] = useState(false);
     const [modal, setModal] = useState('');
 
-    const [email, setEmail] = useState('');
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+    const [form, setForm] = useState({ email: '', username: 'false', password: 'false' });
 
     const dispatch = useAppDispatch();
     useEffect(() => {
@@ -34,18 +32,25 @@ function User() {
             setModal('login');
         }
     }, [isLoading, isLoadingSuccess, loading]);
-    const handleLoading = () => {
+
+    const onFinish = (values: any) => {
+        console.log('Success:', values);
+        const { email, username, password } = form;
+
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
         }, 2000);
-
         if (modal === 'register') {
-            dispatch(regisActions.GET_REGIS({ user: { username: userName, email, password } }));
+            dispatch(regisActions.GET_REGIS({ user: { username: username, email, password } }));
         }
         if (modal === 'login') {
             dispatch(authActions.GET_AUTH({ user: { email, password } }));
         }
+    };
+
+    const onFinishFailed = (errorInfo: any) => {
+        console.log('Failed:', errorInfo);
     };
 
     return (
@@ -73,7 +78,7 @@ function User() {
             <Modal
                 visible={modal === 'login' || modal === 'register'}
                 title={modal}
-                onOk={handleLoading}
+                onOk={onFinish}
                 onCancel={() => {
                     setModal('');
                 }}
@@ -82,60 +87,102 @@ function User() {
                 width={'400px'}
                 centered
             >
-                <Space direction="vertical" style={{ marginBottom: '20px', height: '246px' }}>
-                    <Input
-                        placeholder="Email"
-                        // status="error"
-                        value={email}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            setEmail(event.target.value);
-                        }}
-                    />
-                    {modal === 'register' && (
+                <Form
+                    name="basic"
+                    initialValues={{ remember: true }}
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    autoComplete="off"
+                    style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                >
+                    <Form.Item
+                        name="email"
+                        rules={[
+                            { required: true, message: 'Please input your email!' },
+                            { whitespace: true, message: 'Must not contain whitespace characters!' },
+                            { type: 'email', message: 'Invalid email !' },
+                        ]}
+                    >
                         <Input
-                            placeholder="UserName"
-                            // status="error"
-                            // className={`user-name ${modal === 'login' ? 'show-user' : 'hide-user'}`}
-                            value={userName}
+                            placeholder="Email"
+                            // status={emailIsValid(email) ? '' : 'error'}
+                            value={form.email}
                             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                                setUserName(event.target.value);
+                                setForm((prev) => ({ ...prev, email: event.target.value.trim() }));
                             }}
                         />
+                    </Form.Item>
+
+                    {modal === 'register' && (
+                        <Form.Item
+                            name="username"
+                            rules={[
+                                { required: true, message: 'Please input your name!' },
+                                { min: 6, message: 'Must be 6 characters above!' },
+                            ]}
+                        >
+                            <Input
+                                placeholder="UserName"
+                                // className={`user-name ${modal === 'login' ? 'show-user' : 'hide-user'}`}
+                                value={form.username}
+                                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                    setForm((prev) => ({ ...prev, username: event.target.value.trim() }));
+                                }}
+                            />
+                        </Form.Item>
                     )}
-                    <Input.Password
-                        placeholder="Password"
-                        value={password}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            setPassword(event.target.value);
-                        }}
-                    />
-                    <Link
-                        onClick={() => {
-                            setModal(modal === 'login' ? 'register' : 'login');
-                        }}
+                    <Form.Item
+                        name="password"
+                        rules={[
+                            { required: true, message: 'Please input your password!' },
+                            { min: 6, message: 'Must be at least 6 characters!' },
+                            { max: 20, message: 'Must be no longer than 20 characters!' },
+                        ]}
                     >
-                        {modal === 'login' ? 'Need an account? ' : 'Have an account?'}
-                    </Link>
-                </Space>
-                <Space direction="vertical" style={{ margin: '20px 0' }}></Space>
-                <div className="btn-wrapper">
-                    <Button
-                        key="submit"
-                        type="primary"
-                        loading={loading}
-                        onClick={handleLoading}
-                        style={{ width: '100px' }}
-                    >
-                        {modal === 'login' ? 'login' : 'register'}
-                    </Button>
-                    <Button
-                        onClick={() => {
-                            dispatch(authActions.LOG_OUT());
-                        }}
-                    >
-                        Logout
-                    </Button>
-                </div>
+                        <Input.Password
+                            placeholder="Password"
+                            value={form.password}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setForm((prev) => ({ ...prev, password: event.target.value.trim() }));
+                            }}
+                        />
+                    </Form.Item>
+                    <Form.Item>
+                        {modal === 'login' && (
+                            <Form.Item name="remember" valuePropName="checked" style={{ margin: 0 }}>
+                                <Checkbox>Remember</Checkbox>
+                            </Form.Item>
+                        )}
+
+                        <Link
+                            style={{ margin: 'auto', marginRight: 0 }}
+                            onClick={() => {
+                                setModal(modal === 'login' ? 'register' : 'login');
+                            }}
+                        >
+                            {modal === 'login' ? 'Need an account? ' : 'Have an account?'}
+                        </Link>
+                    </Form.Item>
+                    <div className="btn-wrapper">
+                        {/* <Button
+                            onClick={() => {
+                                dispatch(authActions.LOG_OUT());
+                            }}
+                        >
+                            Logout
+                        </Button> */}
+
+                        <Button
+                            key="submit"
+                            type="primary"
+                            loading={loading}
+                            style={{ width: '100px' }}
+                            htmlType="submit"
+                        >
+                            {modal === 'login' ? 'login' : 'register'}
+                        </Button>
+                    </div>
+                </Form>
             </Modal>
         </div>
     );

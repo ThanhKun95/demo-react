@@ -71,13 +71,29 @@
 }
 
 .btn-wrapper {
+    // margin: 0;
+    flex: 1;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+    & > button {
+        margin-top: auto;
+    }
+
     button ~ button {
         margin-left: 10px;
     }
 }
 // Antd
-.ant-modal-content {
-    height: 400px;
+.ant-modal-body {
+    height: 345px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+// .ant-form-item-control-input {
+//     align-items: flex-end;
+//     height: 100%;
+// }
+.ant-form-item-control-input-content {
+    display: flex;
 }

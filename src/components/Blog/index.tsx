@@ -1,17 +1,17 @@
 import { EllipsisOutlined } from '@ant-design/icons';
 import { Avatar, Card, Input } from 'antd';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { ButtonHeart, Comment, Share } from '~/components/Button';
 import MenuFeed from '../Button/MenuFeed';
 import './Blog.scss';
 const { Meta } = Card;
 
 function Blog() {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    const onChange = (checked: boolean) => {
-        setLoading(!checked);
-    };
+    // const onChange = (checked: boolean) => {
+    //     setLoading(!checked);
+    // };
 
     return (
         <Card title="Global feed" extra={<EllipsisOutlined />} className="card-container" style={{ padding: 0 }}>
