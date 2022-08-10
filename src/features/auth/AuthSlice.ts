@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Auth, DataAuthRegisReturn } from '../../models';
 
 interface Initial {
-    dataAuth: Auth;
+    dataAuth: DataAuthRegisReturn;
     dataInput: Auth;
     isLoadingSuccess: boolean;
 
@@ -12,7 +12,7 @@ interface Initial {
 }
 
 const initialState: Initial = {
-    dataAuth: {} as Auth,
+    dataAuth: {} as DataAuthRegisReturn,
     dataInput: {} as Auth,
     isLoadingSuccess: false,
 
@@ -28,6 +28,7 @@ const authSlice = createSlice({
             state.logging = true;
         },
         GET_AUTH_SUCCESS: (state, action: PayloadAction<DataAuthRegisReturn>) => {
+            state.dataAuth = action.payload;
             state.logging = false;
             state.isLoadingSuccess = true;
         },
@@ -43,7 +44,7 @@ const authSlice = createSlice({
         },
         LOG_OUT: (state) => {
             state.isLoggedIn = false;
-            state.dataAuth = {} as Auth;
+            state.dataAuth = {} as DataAuthRegisReturn;
         },
         LOG_IN: (state) => {
             state.isLoggedIn = true;

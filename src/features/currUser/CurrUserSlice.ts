@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-import { Regis } from '~/models';
+import { Users } from '~/models';
 
 interface initial {
     isLoading: boolean;
@@ -12,26 +11,26 @@ const initialState: initial = {
     isLoadingSuccess: false,
 };
 
-const regisSlice = createSlice({
-    name: 'register',
+const currUserSlice = createSlice({
+    name: 'currUserent',
     initialState,
     reducers: {
-        GET_REGIS: (state, action: PayloadAction<Regis>) => {
+        GET_USER_CURR: (state) => {
             state.isLoading = true;
         },
-        GET_REGIS_SUCCESS: (state) => {
+        GET_USER_CURR_SUCCESS: (state) => {
             state.isLoading = false;
             state.isLoadingSuccess = true;
         },
-        GET_REGIS_FAILED: (state) => {
+        GET_USER_CURR_FAILED: (state) => {
             state.isLoadingSuccess = false;
         },
     },
 });
 
 // Actions
-export const regisActions = regisSlice.actions;
+export const currUserActions = currUserSlice.actions;
 
 // Reducer
-const regisReducer = regisSlice.reducer;
-export default regisReducer;
+const currUserReducer = currUserSlice.reducer;
+export default currUserReducer;

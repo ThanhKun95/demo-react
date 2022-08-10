@@ -10,7 +10,7 @@ function* getRegis(action: PayloadAction<Regis>) {
         if (response) {
             yield put(regisActions.GET_REGIS_SUCCESS());
 
-            localStorage.setItem(response.user.email, response.user.username);
+            localStorage.setItem(response.user.email, response.user.token);
         }
     } catch (error) {
         console.log('Error:', error);

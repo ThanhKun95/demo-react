@@ -17,6 +17,7 @@ function* getDataAuth(action: PayloadAction<Auth>) {
 }
 
 function* handleLogin(action: PayloadAction<DataAuthRegisReturn>) {
+    console.log(action);
     yield put(authActions.LOG_IN());
 }
 function handleLogout(lsKey: string) {}
@@ -24,11 +25,12 @@ function handleLogout(lsKey: string) {}
 function* watchLogin() {
     while (true) {
         const res: PayloadAction<DataAuthRegisReturn> = yield take(authActions.GET_AUTH_SUCCESS.type);
+        const resToken = res.payload.user.token.split('.')[0];
         const lsKey = res.payload.user.email;
         const token = localStorage.getItem(lsKey);
 
         yield fork(handleLogin, res);
-        if (res.payload.user.username === token) {
+        if (token?.includes(resToken)) {
             yield take(authActions.LOG_OUT.type);
             yield call(handleLogout, lsKey);
         }

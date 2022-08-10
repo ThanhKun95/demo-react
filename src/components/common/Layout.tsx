@@ -1,6 +1,7 @@
 import { Layout } from 'antd';
 import { ReactNode } from 'react';
 import MenuPC from './MenuPC';
+
 interface Props {
     children?: ReactNode;
 }
@@ -11,7 +12,6 @@ export default function AppLayout({ children }: Props) {
         <Layout
             style={{
                 width: '100%',
-                background: 'black',
                 opacity: 0.9,
             }}
         >

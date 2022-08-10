@@ -1,0 +1,33 @@
+.profile {
+    margin-top: 42px;
+    &-header {
+        position: relative;
+        &__background {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+        &__avatar {
+            width: 80%;
+            position: absolute;
+            bottom: -125px;
+            left: 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .avatar-img {
+                border: 4px solid white;
+                border-radius: 999px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+    &-content {
+        margin-top: 200px;
+    }
+}

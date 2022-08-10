@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { authActions } from '~/features/auth/AuthSlice';
 
 const axiosClient = axios.create({
     baseURL: 'https://conduit.productionready.io/api',
