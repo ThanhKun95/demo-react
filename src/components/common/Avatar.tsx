@@ -10,7 +10,7 @@ import { useAppSelector } from '~/app/hooks';
 const App: React.FC = () => {
     const dispatch = useAppDispatch();
     const { auth } = useAppSelector((state) => state);
-    const { image } = auth.dataAuth.user;
+    const { username, image } = auth.dataAuth.user;
 
     return (
         <Space direction="vertical">
@@ -29,7 +29,7 @@ const App: React.FC = () => {
                                 },
                                 {
                                     label: (
-                                        <NavLink to={'/profile'} className="flex-center avatar-menu">
+                                        <NavLink to={`/${username}`} className="flex-center avatar-menu">
                                             <AiOutlineProfile /> &nbsp; Profile
                                         </NavLink>
                                     ),

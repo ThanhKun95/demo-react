@@ -6,21 +6,30 @@ import regisSlice from '../features/regis/RegisSlice';
 import currUserSlice from '../features/currUser/CurrUserSlice';
 import articleSlice from '../features/article/ArticleSlice';
 import commentSlice from '../features/comment/CommentSlice';
+import profileSlice from '../features/profile/ProfileSlice';
+import updateUserSlice from '../features/updateUser/UpdateUserSlice';
 import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
-    reducer: {
-        auth: authSlice,
-        regis: regisSlice,
-        currentUser: currUserSlice,
-        articles: articleSlice,
-        comment: commentSlice,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
+	reducer: {
+		auth: authSlice,
+		regis: regisSlice,
+		currentUser: currUserSlice,
+		articles: articleSlice,
+		comment: commentSlice,
+		profile: profileSlice,
+		upDateUser: updateUserSlice,
+	},
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });
 sagaMiddleware.run(rootSaga);
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+	ReturnType,
+	RootState,
+	unknown,
+	Action<string>
+>;
