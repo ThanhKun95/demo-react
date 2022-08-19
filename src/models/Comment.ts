@@ -23,8 +23,24 @@ export interface ListOfTags {
 	tags: string[];
 }
 
-export interface AddComment {
+export interface AddCommentDetail {
 	comment: {
 		body: string;
 	};
+}
+export interface AddComment {
+	slug: string;
+	data: {
+		comment: {
+			body: string;
+		};
+	};
+}
+
+export interface CommentUpdateReturn {
+	comment: Comment;
+}
+export interface DeleteComment {
+	slug: string;
+	id: number;
 }

@@ -3,20 +3,21 @@ import { ReactNode } from 'react';
 import MenuPC from './MenuPC';
 
 interface Props {
-    children?: ReactNode;
+	children?: ReactNode;
 }
 
 const { Content } = Layout;
 export default function AppLayout({ children }: Props) {
-    return (
-        <Layout
-            style={{
-                width: '100%',
-                opacity: 0.9,
-            }}
-        >
-            <MenuPC />
-            <Content>{children}</Content>
-        </Layout>
-    );
+	return (
+		<Layout
+			style={{
+				width: '100%',
+				opacity: 0.9,
+				background: 'transparent',
+			}}
+		>
+			<MenuPC />
+			<Content>{children}</Content>
+		</Layout>
+	);
 }

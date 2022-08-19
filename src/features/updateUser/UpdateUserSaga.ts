@@ -5,8 +5,6 @@ import { UpdateUser } from '~/models';
 import { updateUserActions } from './UpdateUserSlice';
 
 function* updateUser(action: PayloadAction<UpdateUser>) {
-	const token = localStorage.getItem('KSCtoken');
-
 	try {
 		const response: UpdateUser = yield call(userApi.updateUser, action.payload);
 		if (response) {

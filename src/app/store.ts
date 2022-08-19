@@ -6,8 +6,9 @@ import regisSlice from '../features/regis/RegisSlice';
 import currUserSlice from '../features/currUser/CurrUserSlice';
 import articleSlice from '../features/article/ArticleSlice';
 import commentSlice from '../features/comment/CommentSlice';
-import profileSlice from '../features/profile/ProfileSlice';
+import personalSlice from '../features/personal/PersonalSlice';
 import updateUserSlice from '../features/updateUser/UpdateUserSlice';
+import tagsSlice from '../features/tags/TagsSlice';
 import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -17,9 +18,10 @@ export const store = configureStore({
 		regis: regisSlice,
 		currentUser: currUserSlice,
 		articles: articleSlice,
-		comment: commentSlice,
-		profile: profileSlice,
+		comments: commentSlice,
+		personal: personalSlice,
 		upDateUser: updateUserSlice,
+		tags: tagsSlice,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });

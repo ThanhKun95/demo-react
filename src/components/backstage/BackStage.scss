@@ -1,0 +1,80 @@
+.background-main {
+	img {
+		position: fixed;
+		/* top: 46px; */
+		top: 58px;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+	}
+}
+.logo-main {
+	font-family: 'Kaushan Script', cursive;
+	color: white;
+	font-style: italic;
+	font-weight: 50px;
+	position: fixed;
+	z-index: 999;
+	top: 0px;
+	left: 0;
+	font-weight: 300;
+	font-size: 40px;
+
+	div {
+		position: absolute;
+		background-color: #aeafad;
+		border-color: #aeafad;
+		color: transparent;
+		background-image: linear-gradient(
+			45deg,
+			#3a24fe,
+			#6a5af9,
+			#8477f6,
+			#ff2ced,
+			#ffb4dc,
+			#fc6c8f,
+			#ffb86c
+		);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: gradient 5s ease alternate infinite;
+	}
+}
+@media (max-width: 576px) {
+	.logo-main {
+		display: none;
+	}
+}
+@media (min-width: 576px) {
+	.logo-main {
+		img {
+			width: 250px;
+			position: absolute;
+			top: -50px;
+		}
+		.k {
+			top: 5px;
+
+			left: 20px;
+		}
+		.s {
+			top: 5px;
+
+			left: 45px;
+		}
+		.c {
+			top: 5px;
+
+			left: 75px;
+		}
+		div {
+			width: 50px;
+			top: 20px;
+			left: 20px;
+		}
+	}
+}

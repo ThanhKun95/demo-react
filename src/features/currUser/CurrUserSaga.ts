@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { userApi } from '~/api';
 import { Users } from '~/models';
+import { authActions } from '../auth/AuthSlice';
 import { currUserActions } from './CurrUserSlice';
 
 function* getCurrUser() {
@@ -8,8 +9,9 @@ function* getCurrUser() {
 		const response: Users = yield call(userApi.getCurrUser);
 		if (response) {
 			yield put(currUserActions.GET_USER_CURR_SUCCESS());
-
-			localStorage.setItem(response.user.email, response.user.token);
+			localStorage.setItem('KSCtoken', response.user.token);
+			yield put(authActions.GET_AUTH_SUCCESS(response));
+			yield put(authActions.LOG_IN());
 		}
 	} catch (error) {
 		console.log('Error:', error);

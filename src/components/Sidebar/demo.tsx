@@ -1,40 +1,48 @@
-import React, { useState } from 'react';
-import './Sidebar.scss';
 import { Avatar, Card, Layout, Menu } from 'antd';
 import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import './Sidebar.scss';
+import './Sidebar.scss';
 import FollowUser from './Follow';
-import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
+
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
+import React, { useState } from 'react';
 
 const { Meta } = Card;
 
 const Sidebar = ({ dataSub }: any) => {
 	const { username, image, sidebarItem } = dataSub;
-	const [collapsed, setCollapsed] = useState(false);
 	const navigate = useNavigate();
+
+	const [collapsed, setCollapsed] = useState(false);
 
 	const toggleCollapsed = () => {
 		setCollapsed(!collapsed);
 	};
 
 	return (
-		<>
-			<span className={`sidebar sidebar-custom ${collapsed && 'side-small'}`}>
-				<Button
-					className="btn-menu-sidebar"
-					type="primary"
-					onClick={toggleCollapsed}
-					style={{}}
-				>
-					{collapsed ? <BiRightArrow /> : <BiLeftArrow />}
-				</Button>
+		<div className="sidebar" style={{ padding: '0 30px', width: 256 }}>
+			<div className="background-sidebar"></div>
+			<Button
+				type="primary"
+				onClick={toggleCollapsed}
+				style={{ marginBottom: 16 }}
+				className="btn-menu"
+			>
+				{collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+			</Button>
+			<div
+				style={{
+					paddingTop: 100,
+					paddingBottom: 20,
+					display: 'flex',
+					flexDirection: 'column',
+				}}
+			>
 				<Meta
-					className={`avatar ${!collapsed && 'center'}`}
+					style={{ margin: ' auto' }}
 					avatar={
-						<div
+						<span
 							className="cursor-pointer"
 							style={{ marginRight: -16 }}
 							onClick={() => {
@@ -49,12 +57,11 @@ const Sidebar = ({ dataSub }: any) => {
 								}
 								style={{ width: 80, height: 80, padding: 0 }}
 							/>{' '}
-						</div>
+						</span>
 					}
 				/>
-
-				<div
-					className={`cursor-pointer username ${!collapsed && 'center'}`}
+				<span
+					className="cursor-pointer"
 					style={{
 						paddingTop: 10,
 						margin: 'auto',
@@ -67,20 +74,23 @@ const Sidebar = ({ dataSub }: any) => {
 					}}
 				>
 					{username}
-				</div>
+				</span>
+			</div>
+			<FollowUser username={username} />
 
-				<Menu
-					className="menu"
-					defaultSelectedKeys={['1']}
-					defaultOpenKeys={['sub1']}
-					mode="inline"
-					// theme="dark"
-					inlineCollapsed={collapsed}
-					items={sidebarItem}
-				/>
-			</span>
-		</>
+			<Menu
+				mode="inline"
+				inlineCollapsed={collapsed}
+				style={{
+					height: '100%',
+					borderRight: 0,
+					paddingTop: 10,
+					background: 'transparent',
+				}}
+				items={sidebarItem}
+			/>
+		</div>
 	);
 };
 
-export default Sidebar;
+export default memo(Sidebar);

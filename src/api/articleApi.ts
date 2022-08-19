@@ -1,16 +1,9 @@
-import {
-	AddComment,
-	MultipleArticles,
-	MultipleComments,
-	Profile,
-	SingleArticle,
-	UpdateArticle,
-} from '~/models';
+import { Article, CreateArticle, MultipleArticles, SingleArticle, UpdateArticle } from '~/models';
 import axiosClient from './axiosClient';
 
 const articleApi = {
 	getListArticle: (): Promise<MultipleArticles> => {
-		return axiosClient.get('/articles?limit=10?offset=0');
+		return axiosClient.get('/articles?limit=20&offset=0');
 	},
 	getListArticleFilterByTag: (tag: string): Promise<MultipleArticles> => {
 		return axiosClient.get(`/articles?tag=${tag}`);
@@ -26,17 +19,23 @@ const articleApi = {
 		return axiosClient.get(`/articles/feed`);
 	},
 
-	getArticle: (slug: string): Promise<SingleArticle> => {
+	getArticleBySlug: (slug: string): Promise<SingleArticle> => {
 		return axiosClient.get(`/articles/${slug}`);
 	},
-	createArticle: (): Promise<any> => {
-		return axiosClient.post(`/articles`);
+	createArticle: (article: CreateArticle): Promise<Article> => {
+		return axiosClient.post(`/articles`, article);
 	},
-	upDateArticle: (slug: string): Promise<UpdateArticle> => {
-		return axiosClient.put(`/articles/${slug}`);
+	upDateArticle: ({
+		slug,
+		data,
+	}: {
+		slug: string;
+		data: CreateArticle;
+	}): Promise<UpdateArticle> => {
+		return axiosClient.put(`/articles/${slug}`, data);
 	},
 	deleteArticle: (slug: string) => {
-		axiosClient.delete(`articles/${slug}`);
+		return axiosClient.delete(`articles/${slug}`);
 	},
 };
 export default articleApi;

@@ -4,6 +4,7 @@ body {
 		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	caret-color: red;
 }
 
 code {
@@ -19,72 +20,12 @@ code {
 	--blue: #1a73e8;
 	--primary: #e2f5f9;
 	--box-shadow-all: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	--text-shadow: #65676b;
 }
 .ant-layout-content {
 	background: #f0f2f5;
-	min-height: 100vh;
-}
-.background-main {
-	img {
-		position: fixed;
-		/* top: 46px; */
-		top: 58px;
-		left: 0;
-		bottom: 0;
-		right: 0;
-		z-index: -1;
-		width: 100vw;
-		height: 100vh;
-		object-fit: cover;
-	}
-}
-.logo-main {
-	font-family: 'Kaushan Script', cursive;
-	color: white;
-	font-style: italic;
-	font-weight: 50px;
-	position: fixed;
-	z-index: 999;
-	top: 0px;
-	left: 0;
-	font-weight: 300;
-	font-size: 40px;
-	img {
-		width: 250px;
-		position: absolute;
-		top: -18px;
-	}
-	.k {
-		top: 20px;
-	}
-	.s {
-		top: 40px;
-	}
-	.c {
-		top: 60px;
-	}
-	div {
-		width: 50px;
-		top: 20px;
-		left: 20px;
-		position: absolute;
-		background-color: #aeafad;
-		border-color: #aeafad;
-		color: transparent;
-		background-image: linear-gradient(
-			45deg,
-			#3a24fe,
-			#6a5af9,
-			#8477f6,
-			#ff2ced,
-			#ffb4dc,
-			#fc6c8f,
-			#ffb86c
-		);
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
-		animation: gradient 5s ease alternate infinite;
-	}
+	min-height: 110vh;
+	min-width: 100vw;
 }
 
 .cursor-pointer {
@@ -93,5 +34,14 @@ code {
 
 .flex-center {
 	display: flex;
+	align-items: center;
+}
+
+.spin-load {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
 	align-items: center;
 }

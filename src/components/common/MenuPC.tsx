@@ -1,7 +1,8 @@
-import { Button, Checkbox, Form, Input, Menu, Modal, PageHeader, Typography } from 'antd';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Button, Form, Input, Menu, Modal, PageHeader, Typography } from 'antd';
 import './Layout.scss';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '~/app/hooks';
 import { authActions } from '~/features/auth/AuthSlice';
@@ -15,13 +16,10 @@ function MenuPC() {
 	const dispatch = useAppDispatch();
 
 	const navigate = useNavigate();
-	const { auth, regis } = useAppSelector((state) => state);
-	const { isLoading, isLoadingSuccess } = regis;
+	const { auth } = useAppSelector((state) => state);
 
 	const [loading, setLoading] = useState(false);
 	const [modal, setModal] = useState('');
-
-	const [form, setForm] = useState({ email: '', username: '', password: '' });
 
 	useEffect(() => {
 		if (auth.isLoggedIn) {
@@ -33,25 +31,19 @@ function MenuPC() {
 			setModal('');
 		}
 	}, [auth.isLoggedIn]);
-	useEffect(() => {
-		if (isLoading === false && isLoadingSuccess === true && !loading) {
-			setModal('login');
-		}
-	}, [isLoading, isLoadingSuccess, loading]);
 
 	const onFinish = (values: any) => {
 		console.log('Success:', values);
 		if (!auth.isLoggedIn) {
-			const { email, password } = form;
 			setLoading(true);
 			setTimeout(() => {
 				setLoading(false);
 			}, 2000);
 			if (modal === 'register') {
-				dispatch(regisActions.GET_REGIS({ user: form }));
+				dispatch(regisActions.GET_REGIS({ user: values }));
 			}
 			if (modal === 'login') {
-				dispatch(authActions.GET_AUTH({ user: { email, password } }));
+				dispatch(authActions.GET_AUTH({ user: values }));
 			}
 		}
 	};
@@ -102,7 +94,7 @@ function MenuPC() {
 	return (
 		<>
 			<PageHeader
-				className="header__nav__menu mobile-menu nav-cua-tao"
+				className="header__nav__menu mobile-menu nav-other"
 				style={{
 					width: '100%',
 					background: 'white',
@@ -154,13 +146,7 @@ function MenuPC() {
 							{ type: 'email', message: 'Invalid email !' },
 						]}
 					>
-						<Input
-							placeholder="Email"
-							value={form.email}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-								setForm((prev) => ({ ...prev, email: event.target.value.trim() }));
-							}}
-						/>
+						<Input placeholder="Email" />
 					</Form.Item>
 
 					{modal === 'register' && (
@@ -171,17 +157,7 @@ function MenuPC() {
 								{ min: 6, message: 'Must be 6 characters above!' },
 							]}
 						>
-							<Input
-								placeholder="UserName"
-								// className={`user-name ${modal === 'login' ? 'show-user' : 'hide-user'}`}
-								value={form.username}
-								onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-									setForm((prev) => ({
-										...prev,
-										username: event.target.value.trim(),
-									}));
-								}}
-							/>
+							<Input placeholder="UserName" />
 						</Form.Item>
 					)}
 					<Form.Item
@@ -192,27 +168,9 @@ function MenuPC() {
 							{ max: 20, message: 'Must be no longer than 20 characters!' },
 						]}
 					>
-						<Input.Password
-							placeholder="Password"
-							value={form.password}
-							onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-								setForm((prev) => ({
-									...prev,
-									password: event.target.value.trim(),
-								}));
-							}}
-						/>
+						<Input.Password placeholder="Password" />
 					</Form.Item>
 					<Form.Item>
-						{modal === 'login' && (
-							<Form.Item
-								name="remember"
-								valuePropName="checked"
-								style={{ margin: 0 }}
-							>
-								<Checkbox>Remember</Checkbox>
-							</Form.Item>
-						)}
 						<Link
 							style={{ margin: 'auto', marginRight: 0 }}
 							onClick={() => {
@@ -223,13 +181,6 @@ function MenuPC() {
 						</Link>
 					</Form.Item>
 					<div className="btn-wrapper">
-						{/* <Button
-                            onClick={() => {
-                                dispatch(authActions.LOG_OUT());
-                            }}
-                        >
-                            Logout
-                        </Button> */}
 						<Button
 							key="submit"
 							type="primary"
