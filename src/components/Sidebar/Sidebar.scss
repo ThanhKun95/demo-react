@@ -1,0 +1,29 @@
+// Sidebar
+@media (max-width: 992px) {
+	.sidebar {
+		display: none;
+	}
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+	background: transparent;
+}
+
+.ant-menu-vertical .ant-menu-item {
+	margin-bottom: 8px;
+}
+.ant-menu-item:active {
+	background: transparent;
+}
+.ant-menu-vertical > .ant-menu-item {
+	height: 46px;
+	margin-top: 0;
+}
+.background-sidebar {
+	position: absolute;
+	// width: 100px;
+	// height: 100px;
+	img {
+		width: 100%;
+		z-index: -1;
+	}
+}

@@ -1,69 +1,97 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-        'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 :root {
-    --pink-light: #ff7eb4;
-    --pink: #ff2581;
-    --blue: #1a73e8;
-    --primary: #00bfe7;
+	--pink-light: #ff7eb4;
+	--pink: #ff2581;
+	--blue: #1a73e8;
+	--primary: #e2f5f9;
+	--box-shadow-all: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
-
+.ant-layout-content {
+	background: #f0f2f5;
+	min-height: 100vh;
+}
 .background-main {
-    img {
-        position: fixed;
-        /* top: 46px; */
-        top: 58px;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-        width: 100vw;
-        height: 100vh;
-        object-fit: cover;
-    }
+	img {
+		position: fixed;
+		/* top: 46px; */
+		top: 58px;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: -1;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
+	}
 }
 .logo-main {
-    font-family: 'Kaushan Script', cursive;
-    color: white;
-    font-style: italic;
-    font-weight: 50px;
-    position: fixed;
-    z-index: 999;
-    top: 0px;
-    left: 46px;
-    font-weight: 300;
-    font-size: 40px;
-    .k {
-        top: 0;
-    }
-    .s {
-        top: 20px;
-    }
-    .c {
-        top: 40px;
-    }
-    div {
-        width: 50px;
-        position: absolute;
-        background-color: #aeafad;
-        border-color: #aeafad;
-        color: #515052;
-        color: transparent;
-        background-image: linear-gradient(45deg, #3a24fe, #6a5af9, #8477f6, #ff2ced, #ffb4dc, #fc6c8f, #ffb86c);
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradient 5s ease alternate infinite;
-    }
+	font-family: 'Kaushan Script', cursive;
+	color: white;
+	font-style: italic;
+	font-weight: 50px;
+	position: fixed;
+	z-index: 999;
+	top: 0px;
+	left: 0;
+	font-weight: 300;
+	font-size: 40px;
+	img {
+		width: 250px;
+		position: absolute;
+		top: -18px;
+	}
+	.k {
+		top: 20px;
+	}
+	.s {
+		top: 40px;
+	}
+	.c {
+		top: 60px;
+	}
+	div {
+		width: 50px;
+		top: 20px;
+		left: 20px;
+		position: absolute;
+		background-color: #aeafad;
+		border-color: #aeafad;
+		color: transparent;
+		background-image: linear-gradient(
+			45deg,
+			#3a24fe,
+			#6a5af9,
+			#8477f6,
+			#ff2ced,
+			#ffb4dc,
+			#fc6c8f,
+			#ffb86c
+		);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		animation: gradient 5s ease alternate infinite;
+	}
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.flex-center {
+	display: flex;
+	align-items: center;
 }

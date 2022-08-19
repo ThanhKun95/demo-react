@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-import { Regis } from '~/models';
+import { MultipleComments } from '~/models';
 
 interface initial {
     isLoading: boolean;
@@ -12,26 +11,26 @@ const initialState: initial = {
     isLoadingSuccess: false,
 };
 
-const regisSlice = createSlice({
-    name: 'register',
+const commentSlice = createSlice({
+    name: 'comment',
     initialState,
     reducers: {
-        GET_REGIS: (state, action: PayloadAction<Regis>) => {
+        GET_COMMENT: (state, action: PayloadAction<string>) => {
             state.isLoading = true;
         },
-        GET_REGIS_SUCCESS: (state) => {
+        GET_COMMENT_SUCCESS: (state, action: PayloadAction<MultipleComments>) => {
             state.isLoading = false;
             state.isLoadingSuccess = true;
         },
-        GET_REGIS_FAILED: (state) => {
+        GET_COMMENT_FAILED: (state) => {
             state.isLoadingSuccess = false;
         },
     },
 });
 
 // Actions
-export const regisActions = regisSlice.actions;
+export const commentActions = commentSlice.actions;
 
 // Reducer
-const regisReducer = regisSlice.reducer;
-export default regisReducer;
+const commentReducer = commentSlice.reducer;
+export default commentReducer;

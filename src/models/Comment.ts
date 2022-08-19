@@ -1,33 +1,30 @@
+export interface Comment {
+	id: number;
+	createdAt: string;
+	updatedAt: string;
+	body: string;
+	author: {
+		username: string;
+		bio: string;
+		image: string;
+		following: boolean;
+	};
+}
+
 export interface SingleComment {
-    comment: {
-        id: number;
-        createdAt: string;
-        updatedAt: string;
-        body: string;
-        author: {
-            username: string;
-            bio: string;
-            image: string;
-            following: boolean;
-        };
-    };
+	comment: Comment;
 }
 
 export interface MultipleComments {
-    comments: {
-        id: number;
-        createdAt: string;
-        updatedAt: string;
-        body: string;
-        author: {
-            username: string;
-            bio: string;
-            imag: string;
-            following: boolean;
-        };
-    }[];
+	comments: Comment[];
 }
 
 export interface ListOfTags {
-    tags: string[];
+	tags: string[];
+}
+
+export interface AddComment {
+	comment: {
+		body: string;
+	};
 }

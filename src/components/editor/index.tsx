@@ -1,8 +1,14 @@
-import React from 'react';
-export default function Editor() {
-  return (
-    <div>
-      Editor
-    </div>
-  )
+import HeaderEditor from './HeaderEditor';
+import EditorBody from './BodyEditor';
+import './Editor.scss';
+
+function Editor() {
+	return (
+		<div className="editor">
+			<HeaderEditor />
+			<EditorBody />
+		</div>
+	);
 }
+
+export default Editor;
