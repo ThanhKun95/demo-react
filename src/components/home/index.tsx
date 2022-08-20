@@ -26,7 +26,7 @@ function Home() {
 	return (
 		<div>
 			{auth.isLoggedIn && <SubSidebarHome />}
-			{listArticles && listArticles.length > 0 && isLoadingSuccess ? (
+			{listArticles && listArticles.length > 0 ? (
 				<Blog articles={listArticles} more="Read more ..." />
 			) : (
 				<span className="spin-load">

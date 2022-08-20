@@ -35,9 +35,10 @@ function Personal() {
 			{listArticles && listArticles.length > 0 && authorSuccess && (
 				<Blog articles={listArticles} more="Read more ..." />
 			)}
-			{isLoading === false && authorSuccess ? (
+			{isLoading === false && authorSuccess && listArticles.length === 0 && (
 				<div className="no-article">No articles are here... yet.</div>
-			) : (
+			)}
+			{isLoading === true && (
 				<span className="spin-load">
 					<Spin indicator={antIcon} />
 				</span>
