@@ -19,7 +19,7 @@ function Home() {
 	}, []);
 
 	const { auth, articles } = useAppSelector((state) => state);
-	const { isLoadingSuccess } = articles;
+
 	const listArticles = articles.articles.articles;
 	const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 

@@ -1,31 +1,30 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Users } from '~/models';
+import { createSlice } from '@reduxjs/toolkit';
 
 interface initial {
-    isLoading: boolean;
-    isLoadingSuccess: boolean;
+	isLoading: boolean;
+	isLoadingSuccess: boolean;
 }
 
 const initialState: initial = {
-    isLoading: false,
-    isLoadingSuccess: false,
+	isLoading: false,
+	isLoadingSuccess: false,
 };
 
 const currUserSlice = createSlice({
-    name: 'currUserent',
-    initialState,
-    reducers: {
-        GET_USER_CURR: (state) => {
-            state.isLoading = true;
-        },
-        GET_USER_CURR_SUCCESS: (state) => {
-            state.isLoading = false;
-            state.isLoadingSuccess = true;
-        },
-        GET_USER_CURR_FAILED: (state) => {
-            state.isLoadingSuccess = false;
-        },
-    },
+	name: 'currUserent',
+	initialState,
+	reducers: {
+		GET_USER_CURR: (state) => {
+			state.isLoading = true;
+		},
+		GET_USER_CURR_SUCCESS: (state) => {
+			state.isLoading = false;
+			state.isLoadingSuccess = true;
+		},
+		GET_USER_CURR_FAILED: (state) => {
+			state.isLoadingSuccess = false;
+		},
+	},
 });
 
 // Actions
