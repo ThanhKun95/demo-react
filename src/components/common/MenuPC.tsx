@@ -33,7 +33,6 @@ function MenuPC() {
 	}, [auth.isLoggedIn]);
 
 	const onFinish = (values: any) => {
-		console.log('Success:', values);
 		if (!auth.isLoggedIn) {
 			setLoading(true);
 			setTimeout(() => {
@@ -48,9 +47,7 @@ function MenuPC() {
 		}
 	};
 
-	const onFinishFailed = (errorInfo: any) => {
-		console.log('Failed:', errorInfo);
-	};
+	const onFinishFailed = (errorInfo: any) => {};
 
 	const item1 = [
 		{

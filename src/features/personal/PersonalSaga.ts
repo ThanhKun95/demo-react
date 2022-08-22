@@ -11,7 +11,6 @@ function* personal(action: PayloadAction<string>) {
 			yield put(personalActions.GET_PERSONAL_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(personalActions.GET_PERSONAL_FAILED());
 	}
 }
@@ -23,8 +22,7 @@ function* follow(action: PayloadAction<string>) {
 			yield put(personalActions.FOLLOW_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
-		// yield put(personalActions.GET_PERSONAL_FAILED());
+		yield put(personalActions.GET_PERSONAL_FAILED());
 	}
 }
 
@@ -35,8 +33,7 @@ function* unFollow(action: PayloadAction<string>) {
 			yield put(personalActions.UNFOLLOW_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
-		// yield put(personalActions.GET_PERSONAL_FAILED());
+		yield put(personalActions.GET_PERSONAL_FAILED());
 	}
 }
 

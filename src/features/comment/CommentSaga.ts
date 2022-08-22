@@ -11,7 +11,6 @@ function* getComment(action: PayloadAction<string>) {
 			yield put(commentActions.GET_COMMENT_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(commentActions.GET_COMMENT_FAILED());
 	}
 }
@@ -26,7 +25,6 @@ function* updateComment(action: PayloadAction<AddComment>) {
 			yield put(commentActions.UPDATE_COMMENT_SUCCESS(response.comment));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(commentActions.UPDATE_COMMENT_FAILED());
 	}
 }
@@ -38,7 +36,6 @@ function* deleteComment(action: PayloadAction<DeleteComment>) {
 			yield put(commentActions.DELETE_COMMENT_SUCCESS(action.payload.id));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(commentActions.DELETE_COMMENT_FAILED());
 	}
 }

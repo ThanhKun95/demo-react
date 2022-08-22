@@ -14,7 +14,6 @@ export default function Settings() {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	const onFinish = (values: any) => {
-		console.log(values);
 		setLoading(true);
 
 		dispatch(authActions.UPDATE_USER({ user: { ...values } }));
@@ -33,9 +32,7 @@ export default function Settings() {
 		dispatch(authActions.RESET_UPDATE());
 		form.setFieldsValue({ ...user });
 	}, []);
-	const onFinishFailed = (errorInfo: any) => {
-		console.log('Failed:', errorInfo);
-	};
+	const onFinishFailed = (errorInfo: any) => {};
 
 	return (
 		<div className="settings">

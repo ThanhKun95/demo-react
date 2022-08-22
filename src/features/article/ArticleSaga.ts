@@ -12,7 +12,6 @@ function* articleUser() {
 			yield put(articleActions.GET_ARTICLE_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(articleActions.GET_ARTICLE_FAILED());
 	}
 }
@@ -28,7 +27,6 @@ function* articleAuthor(action: PayloadAction<string>) {
 			yield put(articleActions.GET_ARTICLE_BY_AUTHOR_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(articleActions.GET_ARTICLE_FAILED());
 	}
 }
@@ -44,7 +42,6 @@ function* favoriteByUser(action: PayloadAction<string>) {
 			yield put(articleActions.GET_ARTICLE_BY_AUTHOR_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(articleActions.FAVORITE_BY_USER_FAILED());
 	}
 }
@@ -56,7 +53,6 @@ function* articleSlug(action: PayloadAction<string>) {
 			yield put(articleActions.GET_ARTICLE_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(articleActions.GET_ARTICLE_FAILED());
 	}
 }
@@ -68,8 +64,6 @@ function* createArticle(action: PayloadAction<CreateArticle>) {
 			yield put(articleActions.IS_CREATE_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
-
 		yield put(articleActions.IS_CREATED_FAILED());
 	}
 }
@@ -77,12 +71,11 @@ function* createArticle(action: PayloadAction<CreateArticle>) {
 function* updateArticle(action: PayloadAction<UpdateArticle>) {
 	try {
 		const response: SingleArticle = yield call(articleApi.upDateArticle, action.payload);
-		console.log(response);
+
 		if (response) {
 			yield put(articleActions.UPDATE_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(articleActions.UPDATE_FAILED());
 	}
 }
@@ -94,7 +87,6 @@ function* deleteArticle(action: PayloadAction<string>) {
 			yield put(articleActions.IS_DELETE_SUCCESS());
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(articleActions.IS_DELETE_FAILED());
 	}
 }
@@ -108,9 +100,7 @@ function* getArticleByTag(action: PayloadAction<string>) {
 		if (response) {
 			yield put(articleActions.GET_ARTICLE_SUCCESS(response));
 		}
-	} catch (error) {
-		console.log('Error: ', error);
-	}
+	} catch (error) {}
 }
 
 function* favorite(action: PayloadAction<string>) {
@@ -119,9 +109,7 @@ function* favorite(action: PayloadAction<string>) {
 		if (response) {
 			yield put(articleActions.FAVORITE_SUCCESS(response));
 		}
-	} catch (error) {
-		console.log('Error: ', error);
-	}
+	} catch (error) {}
 }
 function* unFavorite(action: PayloadAction<string>) {
 	try {
@@ -129,9 +117,7 @@ function* unFavorite(action: PayloadAction<string>) {
 		if (response) {
 			yield put(articleActions.UNFAVORITE_SUCCESS(response));
 		}
-	} catch (error) {
-		console.log('Error: ', error);
-	}
+	} catch (error) {}
 }
 
 export default function* articleSaga() {

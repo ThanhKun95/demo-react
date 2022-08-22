@@ -70,9 +70,7 @@ function EditorBody() {
 			});
 		}
 	}, []);
-	const onFinishFailed = (errorInfo: any) => {
-		console.log('Failed:', errorInfo);
-	};
+	const onFinishFailed = (errorInfo: any) => {};
 
 	return (
 		<div className="editor-body">

@@ -58,7 +58,6 @@ const authSlice = createSlice({
 		},
 		UPDATE_USER: (state, action: PayloadAction<UpdateUser>) => {},
 		UPDATE_USER_SUCCESS: (state, action: PayloadAction<Users>) => {
-			console.log(action.payload);
 			state.dataAuth.user = action.payload.user;
 			state.updateUserSuccess = true;
 		},

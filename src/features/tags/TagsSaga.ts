@@ -10,7 +10,6 @@ function* tags() {
 			yield put(tagsActions.GET_TAGS_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(tagsActions.GET_TAGS_FAILED());
 	}
 }

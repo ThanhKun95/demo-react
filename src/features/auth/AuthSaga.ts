@@ -12,7 +12,6 @@ function* getDataAuth(action: PayloadAction<Auth>) {
 			yield put(authActions.GET_AUTH_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(authActions.GET_AUTH_FAILED());
 	}
 }
@@ -48,7 +47,6 @@ function* updateUser(action: PayloadAction<UpdateUser>) {
 			yield put(authActions.UPDATE_USER_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(authActions.UPDATE_USER_FAILED());
 	}
 }

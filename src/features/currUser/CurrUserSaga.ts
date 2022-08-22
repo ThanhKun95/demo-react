@@ -14,7 +14,6 @@ function* getCurrUser() {
 			yield put(authActions.LOG_IN());
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(currUserActions.GET_USER_CURR_FAILED());
 	}
 }
