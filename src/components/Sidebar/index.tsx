@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import './Sidebar.scss';
-import { Avatar, Card, Layout, Menu } from 'antd';
-import { memo } from 'react';
+import { Avatar, Card, Menu } from 'antd';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Sidebar.scss';
 // import './Sidebar.scss';
-import FollowUser from './Follow';
-import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
+import { BiLeftArrow, BiRightArrow } from 'react-icons/bi';
 
 const { Meta } = Card;
 
