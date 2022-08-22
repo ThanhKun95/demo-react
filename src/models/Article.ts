@@ -1,44 +1,52 @@
 export interface CreateArticle {
-    article: {
-        title: string;
-        description: string;
-        body: string;
-        tagList: string[];
-    };
+	article: {
+		title: string;
+		description: string;
+		body: string;
+		tagList: string[];
+	};
+}
+export interface UpdateDetail {
+	title: string;
+	description: string;
+	body: string;
+	tagList?: [];
+}
+export interface UpdateArticleReturn {
+	article: UpdateDetail;
 }
 export interface UpdateArticle {
-    article: {
-        title: string;
-    };
+	slug: string;
+	data: CreateArticle;
 }
 
 export interface DeleteArticle {
-    comment: {
-        body: string;
-    };
+	comment: {
+		body: string;
+	};
 }
 
 export interface Article {
-    slug: string;
-    title: string;
-    description: string;
-    body: string;
-    tagList: string[];
-    createdAt: string;
-    updatedAt: string;
-    favorited: boolean;
-    favoritesCount: 0;
-    author: {
-        username: string;
-        bio: string;
-        image: string;
-        following: boolean;
-    };
+	slug: string;
+	title: string;
+	description: string;
+	body: string;
+	tagList: string[];
+	createdAt: string;
+	updatedAt: string;
+	favorited: boolean;
+	favoritesCount: 0;
+	author: {
+		username: string;
+		bio: string;
+		image: string;
+		following: boolean;
+	};
 }
 export interface SingleArticle {
-    article: Article;
+	article: Article;
 }
 export interface MultipleArticles {
-    articles: Article[];
-    articlesCount: number;
+	articles: Article[];
+	articlesCount: number;
 }

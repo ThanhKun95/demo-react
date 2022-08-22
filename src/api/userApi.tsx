@@ -11,7 +11,7 @@ const userApi = {
 	getCurrUser: (): Promise<Users> => {
 		return axiosClient.get('/user');
 	},
-	updateUser: (user: UpdateUser): Promise<UpdateUser> => {
+	updateUser: (user: UpdateUser): Promise<Users> => {
 		return axiosClient.put('/user', user);
 	},
 };

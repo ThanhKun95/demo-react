@@ -3,25 +3,25 @@
 
 // // Ant
 .ant-layout {
-    padding: 0;
+	padding: 0;
 }
 .ant-page-header {
-    padding: 0;
+	padding: 0;
 }
 .ant-menu-item:after,
 .ant-menu-item a:before,
 .ant-menu-submenu:after {
-    bottom: 6px !important;
-    background-color: transparent !important;
+	bottom: 6px !important;
+	background-color: transparent !important;
 }
 .ant-menu-item-selected:after,
 .ant-menu-item:hover:after {
-    border-bottom: 2px solid transparent !important;
+	border-bottom: 2px solid transparent !important;
 }
 
 .ant-page-header-heading-left {
-    margin-left: auto;
-    margin-right: 4%;
+	margin-left: auto;
+	margin-right: 4%;
 }
 
 // ant-menu-overflow ant-menu ant-menu-root ant-menu-horizontal ant-menu-light nav-list
@@ -29,108 +29,108 @@
 // // Nav
 
 .header__nav__menu {
-    margin-right: 45px;
-    font-weight: 700;
-    color: var(--primary);
+	margin-right: 45px;
+	font-weight: 700;
+	color: var(--primary);
 
-    & ul li {
-        display: inline-block;
+	& ul li {
+		display: inline-block;
 
-        position: relative;
-        &:last-child {
-        }
-        & span {
-            position: relative;
+		position: relative;
+		&:last-child {
+		}
+		& span {
+			position: relative;
 
-            & .nav-item {
-                & .nav-item__text {
-                    color: #00bfe7;
-                    &:hover {
-                        // color: var(--primary);
-                    }
-                }
-            }
-        }
-    }
+			& .nav-item {
+				& .nav-item__text {
+					color: #00bfe7;
+					&:hover {
+						// color: var(--primary);
+					}
+				}
+			}
+		}
+	}
 }
 
 // Nav
-.nav-cua-tao {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 58px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    * > * {
-        font-size: 20px;
-        height: 100%;
-        align-items: center;
-    }
+.nav-other {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 58px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	* > * {
+		font-size: 20px;
+		height: 100%;
+		align-items: center;
+	}
 }
 .sidebar {
-    position: fixed;
-    top: 57px;
-    left: 0;
-    right: 0;
-    height: calc(100% - 57px);
-    box-shadow: var(--box-shadow-all);
+	position: fixed;
+	top: 57px;
+	left: 0;
+	right: 0;
+	height: calc(100% - 57px);
+	box-shadow: var(--box-shadow-all);
 }
 
 // Nav
 
 //Modal User
 .user-container {
-    height: 58px;
-    z-index: 99;
-    width: 300px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 40px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+	height: 58px;
+	z-index: 99;
+	width: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-left: auto;
+	margin-right: 40px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 }
 .ant-modal-body {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 .ant-input-affix-wrapper {
-    height: 40px;
-    &.ant-input-password .ant-input {
-        height: 30px;
-    }
+	height: 40px;
+	&.ant-input-password .ant-input {
+		height: 30px;
+	}
 }
 
 .btn-wrapper {
-    // margin: 0;
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    & > button {
-        margin-top: auto;
-    }
+	// margin: 0;
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+	& > button {
+		margin-top: auto;
+	}
 
-    button ~ button {
-        margin-left: 10px;
-    }
+	button ~ button {
+		margin-left: 10px;
+	}
 }
 // Antd
 .ant-modal-body {
-    height: 345px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	height: 345px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .ant-form-item-control-input-content {
-    display: flex;
+	display: flex;
 }
 
 // Avatar
 .avatar-menu {
-    line-height: 30px;
+	line-height: 30px;
 }

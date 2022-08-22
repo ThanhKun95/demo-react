@@ -1,156 +1,102 @@
-import { Avatar, Card, Input } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Avatar, Card, Spin } from 'antd';
 import moment from 'moment';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axiosClient from '~/api/axiosClient';
+import { memo } from 'react';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '~/app/hooks';
-import { ButtonHeart, Comment, Share } from '../Button';
+import { commentActions } from '~/features/comment/CommentSlice';
+import { Comment as CommentIF } from '~/models';
 
 const { Meta } = Card;
-
-interface Props {
-	slug: string;
-}
-function CommentBlog({ slug }: Props) {
-	const [show, setShow] = useState(false);
-	const [res, setRes] = useState<any>();
+function CommentBlog() {
 	const navigate = useNavigate();
-	const { auth } = useAppSelector((state) => state);
-
 	const dispatch = useAppDispatch();
-	useEffect(() => {
-		axiosClient.get(`/articles/${slug}/comments`).then((res) => {
-			setRes(res);
-		});
-	}, []);
+	const { slugPage } = useParams();
+	const { deleteCommentLoading, comments } = useAppSelector((state) => state.comments);
+	const handleDelComment = (id: number) => {
+		if (slugPage) {
+			dispatch(commentActions.DELETE_COMMENT({ slug: slugPage, id }));
+		}
+	};
+	const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-	useEffect(() => {
-		// slug && dispatch(commentActions.GET_COMMENT(slug));
-	}, []);
 	return (
 		<div style={{ width: '100%' }}>
 			<ul className="list-comment">
-				<li className="comment-item">
-					<Card
-						className="card-action"
-						style={{ width: '100%', border: 0 }}
-						actions={[
-							<ButtonHeart liked>15K</ButtonHeart>,
-							<span
-								onClick={() => {
-									setShow(true);
-								}}
-							>
-								<Comment>4000</Comment>
-							</span>,
-							<Share>20K</Share>,
-						]}
-					/>{' '}
-					{auth.isLoggedIn && show && (
-						<Input
-							addonAfter={
-								<Card
-									style={{
-										height: '38px',
-										border: 0,
-										display: 'flex',
-										alignItems: 'center',
-										overflow: 'hidden',
-									}}
-									actions={[<Comment />]}
-								></Card>
-							}
-							defaultValue=""
-							placeholder="White a comment..."
-						/>
-					)}
-					{res &&
-						show &&
-						res.comments.map((res: any) => {
-							const { id, author, body, createdAt } = res;
-							return (
-								<div key={id} style={{ marginBottom: 30 }}>
-									<div className="user-UserContent">
-										<Meta
-											style={{ marginTop: '12px' }}
-											avatar={
-												<span
-													className="cursor-pointer"
-													onClick={() => {
-														navigate(`/article/${author.username}`);
-													}}
-												>
-													<Avatar
-														src={
-															author.image
-																? author.image
-																: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
-														}
-														style={{ width: '32px' }}
-													/>
-												</span>
-											}
-											title={
-												<span
-													className="cursor-pointer"
-													onClick={() => {
-														navigate(`/article/${author.username}`);
-													}}
-												>
-													{author.username}
-												</span>
-											}
-										/>
-										<div>
-											<Card
-												bordered={false}
-												style={{ margin: '12px 12px 12px 48px' }}
-											>
-												{body}
-											</Card>
-											<Card
-												style={{ width: '100%', border: 0 }}
-												actions={[
-													<ButtonHeart />,
-													<Comment />,
-													<div>
-														{moment(createdAt).format('DD MMMM YYYY')}
-													</div>,
-												]}
-											></Card>
+				{' '}
+				{comments &&
+					comments.length > 0 &&
+					comments.map((res: CommentIF) => {
+						const { id, author, body, createdAt } = res;
+						return (
+							<div key={id} className="user-UserContent comment-item">
+								<Meta
+									style={{ marginTop: '12px' }}
+									avatar={
+										<span
+											className="cursor-pointer"
+											onClick={() => {
+												navigate(`/article/${author.username}`);
+											}}
+										>
+											<Avatar
+												src={
+													author.image
+														? author.image
+														: 'https://cdn-icons-png.flaticon.com/512/149/149071.png'
+												}
+												style={{ width: '32px' }}
+											/>
+										</span>
+									}
+								/>
+								<div className="comment-content">
+									<span className="user">
+										<span
+											className="cursor-pointer username"
+											onClick={() => {
+												navigate(`/article/${author.username}`);
+											}}
+										>
+											{author.username}
+										</span>
+										<Card
+											bordered={false}
+											style={{
+												marginLeft: 12,
+												background: 'transparent',
+											}}
+										>
+											<p className="user-title">{body}</p>
+										</Card>
+									</span>
+									<span className="option">
+										<div className="option-time">
+											{moment(createdAt).format('DD MMM YYYY')}
 										</div>
-									</div>
-									<div
-										className="cursor-pointer"
-										style={{
-											textAlign: 'start',
-											marginLeft: '45px',
-											fontWeight: 700,
-											color: '#65676b',
-										}}
-									>
-										Load more replies
-									</div>
+										<span className="option-delete">
+											{deleteCommentLoading && (
+												<span className="spin-load">
+													<Spin indicator={antIcon} />
+												</span>
+											)}
+											<span
+												onClick={() => {
+													handleDelComment(id);
+												}}
+											>
+												<AiOutlineDelete />
+											</span>
+										</span>
+									</span>
 								</div>
-							);
-						})}
-					{/* <!-- Load more replies --> */}
-				</li>
-				{show && (
-					<div
-						style={{
-							textAlign: 'start',
-							margin: '20px 0',
-							fontWeight: 700,
-							color: '#65676b',
-						}}
-					>
-						Load more comments
-					</div>
-				)}
+							</div>
+						);
+					})}
 			</ul>
 		</div>
 	);
 }
 
-export default CommentBlog;
+export default memo(CommentBlog);

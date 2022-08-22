@@ -13,7 +13,6 @@ function* getRegis(action: PayloadAction<Regis>) {
 			localStorage.setItem('KSCtoken', response.user.token);
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(regisActions.GET_REGIS_FAILED());
 	}
 }

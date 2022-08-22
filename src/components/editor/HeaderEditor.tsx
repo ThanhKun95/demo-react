@@ -1,11 +1,11 @@
 import { Avatar, Button, Card } from 'antd';
-import { ButtonPrimary } from '../Button';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '~/app/hooks';
 const { Meta } = Card;
 function HeaderEditor() {
 	const { user } = useAppSelector((state) => state.auth.dataAuth);
 	const { username, image } = user;
+
 	return (
 		<div className="editor-header">
 			<img

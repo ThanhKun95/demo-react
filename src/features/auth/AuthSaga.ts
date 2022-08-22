@@ -1,18 +1,17 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { call, fork, put, take, takeLatest } from 'redux-saga/effects';
 import { userApi } from '~/api';
-import { Auth, DataAuthRegisReturn } from '~/models';
+import { Auth, DataAuthRegisReturn, UpdateUser, Users } from '~/models';
 import { authActions } from './AuthSlice';
 
 function* getDataAuth(action: PayloadAction<Auth>) {
 	try {
 		const response: DataAuthRegisReturn = yield call(userApi.auth, action.payload);
-		console.log(response);
+
 		if (response) {
 			yield put(authActions.GET_AUTH_SUCCESS(response));
 		}
 	} catch (error) {
-		console.log('Error:', error);
 		yield put(authActions.GET_AUTH_FAILED());
 	}
 }
@@ -39,7 +38,21 @@ function* watchLogin() {
 	}
 }
 
+function* updateUser(action: PayloadAction<UpdateUser>) {
+	try {
+		const response: Users = yield call(userApi.updateUser, action.payload);
+
+		if (response) {
+			localStorage.setItem('KSCtoken', response.user.token);
+			yield put(authActions.UPDATE_USER_SUCCESS(response));
+		}
+	} catch (error) {
+		yield put(authActions.UPDATE_USER_FAILED());
+	}
+}
+
 export default function* authSaga() {
 	yield takeLatest(authActions.GET_AUTH.type, getDataAuth);
+	yield takeLatest(authActions.UPDATE_USER.type, updateUser);
 	yield fork(watchLogin);
 }

@@ -4,8 +4,9 @@ import regisSaga from '~/features/regis/RegisSaga';
 import currUserSaga from '~/features/currUser/CurrUserSaga';
 import articleSaga from '~/features/article/ArticleSaga';
 import commentSaga from '~/features/comment/CommentSaga';
-import profileSaga from '~/features/profile/ProfileSaga';
+import profileSaga from '~/features/personal/PersonalSaga';
 import updateUserSaga from '~/features/updateUser/UpdateUserSaga';
+import TagsSaga from '~/features/tags/TagsSaga';
 export default function* rootSaga() {
 	yield all([
 		authSaga(),
@@ -15,5 +16,6 @@ export default function* rootSaga() {
 		commentSaga(),
 		profileSaga(),
 		updateUserSaga(),
+		TagsSaga(),
 	]);
 }
