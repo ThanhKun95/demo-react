@@ -13,7 +13,7 @@ import SubSidebarProfile from './SubSidebarProfile';
 function Personal() {
 	const { auth, articles } = useAppSelector((state) => state);
 	const { personalPage } = useParams();
-	console.log(personalPage);
+
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		if (personalPage) {
