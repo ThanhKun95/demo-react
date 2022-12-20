@@ -1,0 +1,10 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    width: 1100px;
+    margin: auto;
+}
+.title {
+    margin-top: 3rem;
+    color: #ccc;
+}
